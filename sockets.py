@@ -116,7 +116,7 @@ def subscribe_socket(ws):
     # XXX: TODO IMPLEMENT ME
     #return None
     # from the examples slides
-    print("Asmaaaaaaaaaaaa")
+    #print("Asmaaaaaaaaaaaa")
     client = Client()
     clients.append(client)
     g = gevent.spawn( read_ws, ws, client )    
@@ -148,11 +148,14 @@ def flask_post_json():
 def update(entity):
     '''update the entities via this interface'''
     values = flask_post_json()
+    """
     for key in values:
         try:
             myWorld.update(entity, key, values[key])
         except:
             myWorld.set(entity, values)
+    """
+    myWorld.set(entity, values)
     return json.dumps(myWorld.get(entity))
 
 @app.route("/world", methods=['POST','GET'])    
